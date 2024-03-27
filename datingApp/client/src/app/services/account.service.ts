@@ -14,11 +14,11 @@ export class AccountService {
 
   constructor(private http: HttpClient) { }
 
-  login(model: any){
-    return this.http.post<IUser>(this.baseUrl + "account/login", model).pipe(
+  login(model: any) {
+    return this.http.post<IUser>(this.baseUrl + 'account/login', model).pipe(
       map((response: IUser) => {
         const user = response;
-        if(user){
+        if (user) {
           this.setCurrentUser(user);
         }
       })
@@ -26,17 +26,17 @@ export class AccountService {
   }
 
   register(model: any) {
-    return this.http.post<IUser>(this.baseUrl + "account/register", model).pipe(
-      map((user: IUser)=> {
-        if(user) {
+    return this.http.post<IUser>(this.baseUrl + 'account/register', model).pipe(
+      map(user => {
+        if (user) {
           this.setCurrentUser(user);
         }
       })
-    );
+    )
   }
 
   setCurrentUser(user: IUser){
-    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);
   }
 
