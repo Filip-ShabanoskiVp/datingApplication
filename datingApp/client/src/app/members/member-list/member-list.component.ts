@@ -14,7 +14,7 @@ import { IUser } from '../../models/user';
 })
 export class MemberListComponent implements OnInit{
   members!: Member[];
-  pagination!: Pagination;
+  pagination: Pagination = { currentPage: 0, totalItems: 0, totalPages: 0, itemsPerPage: 0};
   userParams!: UserParams;
   user!: IUser;
   genderList = [{value: 'male', display: 'Males'}, {value: 'female', display: 'Females'}];
